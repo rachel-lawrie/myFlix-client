@@ -20,7 +20,11 @@ export const MainView = () => {
             Description: movie.Description,
           };
         });
+        console.log("Movies formatted:", moviesFromApi);
         setMovies(moviesFromApi);
+      })
+      .catch((error) => {
+        console.error("Error fetching movies:", error);
       });
   }, []);
 
