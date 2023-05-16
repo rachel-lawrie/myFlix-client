@@ -19,6 +19,7 @@ export const MainView = () => {
             Genre: movie.Genre.Name,
             Director: movie.Director.Name,
             Description: movie.Description,
+            Image: movie.ImagePath,
           };
         });
         console.log("Movies formatted:", moviesFromApi);
