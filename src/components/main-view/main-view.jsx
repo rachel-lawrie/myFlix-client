@@ -12,7 +12,7 @@ export const MainView = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Response:", data); // log the entire response object
-        const moviesFromApi = data.movies.map((movie) => {
+        const moviesFromApi = data.map((movie) => {
           return {
             ID: movie._id,
             Title: movie.Title,
