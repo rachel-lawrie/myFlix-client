@@ -23,6 +23,7 @@ export const MainView = () => {
         });
         console.log("Movies formatted:", moviesFromApi);
         setMovies(moviesFromApi);
+        console.log(movies);
       })
       .catch((error) => {
         console.error("Error fetching movies:", error);
