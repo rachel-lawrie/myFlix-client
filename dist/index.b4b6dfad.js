@@ -27159,6 +27159,7 @@ const MainView = ()=>{
     _s();
     const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    const [user, setUser] = (0, _react.useState)(null);
     (0, _react.useEffect)(()=>{
         fetch("https://lawrie-myflix.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
             console.log("Response:", data); // log the entire response object
@@ -27177,19 +27178,24 @@ const MainView = ()=>{
             console.error("Error fetching movies:", error);
         });
     }, []);
+    if (!user) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(LoginView, {}, void 0, false, {
+        fileName: "src/components/main-view/main-view.jsx",
+        lineNumber: 33,
+        columnNumber: 12
+    }, undefined);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
         movie: selectedMovie,
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 34,
+        lineNumber: 38,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 42,
+        lineNumber: 46,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27200,16 +27206,16 @@ const MainView = ()=>{
                 }
             }, movie.id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 48,
+                lineNumber: 52,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 46,
+        lineNumber: 50,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "PO+XgOji7E32nFJj3H5UPLPJ7w4=");
+_s(MainView, "AA2Lbd5vppiQn5Rpxq/geFPiCys=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");

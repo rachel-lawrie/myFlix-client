@@ -4,8 +4,8 @@ import { MovieView } from "../movie-view/movie-view";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
-
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     fetch("https://lawrie-myflix.herokuapp.com/movies")
@@ -28,6 +28,10 @@ export const MainView = () => {
         console.error("Error fetching movies:", error);
       });
   }, []);
+
+  if (!user) {
+    return <LoginView />;
+  }
 
   if (selectedMovie) {
     return (
