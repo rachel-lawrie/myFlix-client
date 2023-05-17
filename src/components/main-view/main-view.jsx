@@ -5,7 +5,7 @@ import { MovieView } from "../movie-view/movie-view";
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
 
-  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [selectedMovie, setSelectedMovie] = useState(null);.
 
   useEffect(() => {
     fetch("https://lawrie-myflix.herokuapp.com/movies")
