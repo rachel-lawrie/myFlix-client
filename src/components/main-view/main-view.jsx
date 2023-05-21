@@ -87,6 +87,7 @@ export const MainView = () => {
         onClick={() => {
           setUser(null);
           setToken(null);
+          localStorage.clear();
         }}
       >
         Logout

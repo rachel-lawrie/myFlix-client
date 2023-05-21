@@ -27249,6 +27249,7 @@ const MainView = ()=>{
                 onClick: ()=>{
                     setUser(null);
                     setToken(null);
+                    localStorage.clear();
                 },
                 children: "Logout"
             }, void 0, false, {
@@ -28372,8 +28373,8 @@ const LoginView = ({ onLoggedIn  })=>{
         // this prevents the default behavior of the form which is to reload the entire page
         event.preventDefault();
         const data = {
-            access: username,
-            secret: password
+            Username: username,
+            Password: password
         };
         console.log("Data being posted:", data); // Log the data object
         fetch("https://lawrie-myflix.herokuapp.com/login", {
