@@ -4,27 +4,26 @@ import { useParams } from "react-router";
 
 export const PopupForm = ({ user, token, show, handleClose }) => {
   const [username, setUsername] = useState(user.Username);
-  const [password, setPassword] = useState(user.Password);
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    const formattedBirthday = new Date(birthday).toISOString().slice(0, 10);
+
     const data = {
       Username: username,
       Email: email,
-      Birthday: user.Birthday,
+      Birthday: formattedBirthday,
     };
 
     console.log(user);
     console.log(data);
     console.log(token);
 
-    const newPassword = { Password: password };
-
-    fetch(`https://lawrie-myflix.herokuapp.com/users/${username}/`, {
-      method: "POST",
+    fetch(`https://lawrie-myflix.herokuapp.com/users/${username}`, {
+      method: "PUT",
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",

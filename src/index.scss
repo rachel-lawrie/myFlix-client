@@ -1,3 +1,5 @@
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
+
 $color: steelblue;
 
 .my-flix {
@@ -7,3 +9,23 @@ $color: steelblue;
 $primary: rgb(41, 76, 116);
 $body-bg: white;
 @import "~bootstrap/scss/bootstrap.scss";
+
+.favorite-star {
+  background-color: transparent;
+  border: 1px solid black;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.favorite-star i {
+  color: white;
+  font-size: 24px;
+}
+
+.favorite-star.favorite i {
+  color: $primary;
+}

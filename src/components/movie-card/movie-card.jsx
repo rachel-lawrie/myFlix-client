@@ -1,19 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useParams } from "react-router";
 
-export const MovieCard = ({ movie }) => {
+export const MovieCard = ({ movie, username, token, favorites }) => {
+  console.log(favorites);
+
   return (
-    <Link to={`/movies/${encodeURIComponent(movie.ID)}`}>
-      <Card className="h-100">
+    <Card className="h-100">
+      <Link to={`/movies/${encodeURIComponent(movie.ID)}`}>
         <Card.Img variant="top" src={movie.Image} />
-        <Card.Body>
-          <Card.Title>{movie.Title}</Card.Title>
-          <Card.Text>{movie.Director}</Card.Text>
-        </Card.Body>
-      </Card>
-    </Link>
+      </Link>
+      <Card.Body>
+        <Card.Title>{movie.Title}</Card.Title>
+        <Card.Text>{movie.Director}</Card.Text>
+        <button
+          className={`favorite-star ${
+            favorites.includes(movie.ID) ? "favorite" : ""
+          }`}
+          // onClick={handleFavoriteClick}
+        >
+          <i className="fa fa-star"></i>
+        </button>
+      </Card.Body>
+    </Card>
   );
 };
 
