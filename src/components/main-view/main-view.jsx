@@ -221,7 +221,14 @@ export const MainView = () => {
                     <Card.Title className="mb-5 text-center">
                       Favorites
                     </Card.Title>
-                    <FavoritesView />
+                    <FavoritesView
+                      user={user}
+                      movies={movies}
+                      username={user.Username}
+                      token={token}
+                      favorites={user.Favorites}
+                      updateFavorites={updateFavorites}
+                    />
                   </Card.Body>
                 </Card>
               </Col>

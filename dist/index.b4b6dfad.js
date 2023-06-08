@@ -27416,7 +27416,14 @@ const MainView = ()=>{
                                                     className: "mb-5 text-center",
                                                     children: "Favorites"
                                                 }, void 0, false, void 0, void 0),
-                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _favoritesView.FavoritesView), {}, void 0, false, void 0, void 0)
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _favoritesView.FavoritesView), {
+                                                    user: user,
+                                                    movies: movies,
+                                                    username: user.Username,
+                                                    token: token,
+                                                    favorites: user.Favorites,
+                                                    updateFavorites: updateFavorites
+                                                }, void 0, false, void 0, void 0)
                                             ]
                                         }, void 0, true, void 0, void 0)
                                     }, void 0, false, void 0, void 0)
@@ -47549,14 +47556,54 @@ $RefreshReg$(_c, "PasswordResetForm");
   window.$RefreshSig$ = prevRefreshSig;
 }
 },{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","react-router":"dbWyW","@parcel/transformer-js/src/esmodule-helpers.js":"2iPZC","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"8sONl"}],"4UsQY":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$73ad = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$73ad.prelude(module);
+
+try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "FavoritesView", ()=>FavoritesView);
-const FavoritesView = ({})=>{};
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _movieCard = require("../movie-card/movie-card");
+const FavoritesView = ({ movies , user , username , token , updateFavorites  })=>{
+    console.log("User Favorites:", user.Favorites);
+    // Filter movies based on IDs present in user.Favorites
+    const favoriteMovies = movies.filter((movie)=>user.Favorites.includes(movie.ID));
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: favoriteMovies.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+            children: "No favorite movies selected."
+        }, void 0, false, {
+            fileName: "src/components/favorites-view/favorites-view.jsx",
+            lineNumber: 19,
+            columnNumber: 9
+        }, undefined) : favoriteMovies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
+                movie: movie,
+                username: user.Username,
+                token: token,
+                favorites: user.Favorites,
+                updateFavorites: updateFavorites
+            }, movie.ID, false, {
+                fileName: "src/components/favorites-view/favorites-view.jsx",
+                lineNumber: 22,
+                columnNumber: 11
+            }, undefined))
+    }, void 0, false, {
+        fileName: "src/components/favorites-view/favorites-view.jsx",
+        lineNumber: 17,
+        columnNumber: 5
+    }, undefined);
+};
 _c = FavoritesView;
 var _c;
 $RefreshReg$(_c, "FavoritesView");
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"2iPZC"}],"lJZlQ":[function() {},{}]},["hblAu","dezBq","d8Dch"], "d8Dch", "parcelRequireaec4")
+  $parcel$ReactRefreshHelpers$73ad.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","../movie-card/movie-card":"bwuIu","@parcel/transformer-js/src/esmodule-helpers.js":"2iPZC","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"8sONl"}],"lJZlQ":[function() {},{}]},["hblAu","dezBq","d8Dch"], "d8Dch", "parcelRequireaec4")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
