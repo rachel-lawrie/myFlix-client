@@ -17,6 +17,10 @@ export const MainView = () => {
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
   const [users, setUsers] = useState([]);
+  const updateFavorites = (newFavorites) => {
+    const updatedUser = { ...user, Favorites: newFavorites };
+    setUser(updatedUser);
+  };
 
   useEffect(() => {
     if (!token) {
@@ -170,6 +174,7 @@ export const MainView = () => {
                             username={user.Username}
                             token={token}
                             favorites={user.Favorites}
+                            updateFavorites={updateFavorites}
                           />
                         </Col>
                       ))}
