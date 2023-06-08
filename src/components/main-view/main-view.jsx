@@ -201,12 +201,9 @@ export const MainView = () => {
           <Route
             path="/profile"
             element={
-              <Col md={5}>
+              <>
                 <Card className="p-3">
                   <Card.Body>
-                    <Card.Title className="mb-5 text-center">
-                      Profile
-                    </Card.Title>
                     <ProfileView
                       users={users}
                       user={user}
@@ -216,22 +213,17 @@ export const MainView = () => {
                     />
                   </Card.Body>
                 </Card>
-                <Card className="p-3">
-                  <Card.Body>
-                    <Card.Title className="mb-5 text-center">
-                      Favorites
-                    </Card.Title>
-                    <FavoritesView
-                      user={user}
-                      movies={movies}
-                      username={user.Username}
-                      token={token}
-                      favorites={user.Favorites}
-                      updateFavorites={updateFavorites}
-                    />
-                  </Card.Body>
-                </Card>
-              </Col>
+                <>
+                  <FavoritesView
+                    user={user}
+                    movies={movies}
+                    username={user.Username}
+                    token={token}
+                    favorites={user.Favorites}
+                    updateFavorites={updateFavorites}
+                  />
+                </>
+              </>
             }
           />
         </Routes>

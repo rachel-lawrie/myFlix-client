@@ -8,6 +8,7 @@ import { Link, Navigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { PopupForm } from "../popup-form/popup-form";
 import { PasswordResetForm } from "../passwordreset-form/passwordreset-form";
+import { Col } from "react-bootstrap";
 
 export const ProfileView = ({ user, token, setUser, setToken }) => {
   const [showForm, setShowForm] = useState(false);
@@ -60,48 +61,62 @@ export const ProfileView = ({ user, token, setUser, setToken }) => {
   }
 
   return (
-    <div>
-      <p>
-        <strong>Username: </strong>
-        {user.Username}
-      </p>
-      <p>
-        <strong>Email: </strong>
-        {user.Email}
-      </p>
-      <p>
-        <strong>Birthday: </strong>
-        {new Date(user.Birthday).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "short",
-          day: "2-digit",
-        })}
-      </p>
-      <Button variant="primary" onClick={handleEditProfile}>
-        Edit Profile
-      </Button>
-      <PopupForm
-        user={user}
-        token={token}
-        show={showForm}
-        handleClose={handleCloseForm}
-      />
-      <PasswordResetForm
-        username={user.Username}
-        token={token}
-        showtwo={showFormtwo}
-        handleClosetwo={handleCloseFormtwo}
-      />
-      <Button variant="primary" onClick={handleUpdatePassword}>
-        Update Password
-      </Button>
-      <Button
-        username={user.Username}
-        variant="primary"
-        onClick={handleDeRegister}
-      >
-        Delete Account
-      </Button>
-    </div>
+    <Col>
+      <div>
+        <h1 style={{ textAlign: "center", margin: "0 auto" }}>Profile</h1>
+        <p>
+          <strong>Username: </strong>
+          {user.Username}
+        </p>
+        <p>
+          <strong>Email: </strong>
+          {user.Email}
+        </p>
+        <p>
+          <strong>Birthday: </strong>
+          {new Date(user.Birthday).toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "short",
+            day: "2-digit",
+          })}
+        </p>
+        <div className="mb-3" style={{ display: "flex" }}>
+          <Button
+            className="mx-2"
+            variant="primary"
+            onClick={handleEditProfile}
+          >
+            Edit Profile
+          </Button>
+          <PopupForm
+            user={user}
+            token={token}
+            show={showForm}
+            handleClose={handleCloseForm}
+          />
+          <PasswordResetForm
+            username={user.Username}
+            token={token}
+            showtwo={showFormtwo}
+            handleClosetwo={handleCloseFormtwo}
+          />
+          <Button
+            className="mx-2"
+            variant="primary"
+            onClick={handleUpdatePassword}
+          >
+            Update Password
+          </Button>
+          <Button
+            className="mx-2"
+            username={user.Username}
+            variant="primary"
+            onClick={handleDeRegister}
+          >
+            Delete Account
+          </Button>
+        </div>
+      </div>
+    </Col>
   );
 };
