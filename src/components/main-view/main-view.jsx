@@ -21,6 +21,8 @@ export const MainView = () => {
     const updatedUser = { ...user, Favorites: newFavorites };
     setUser(updatedUser);
   };
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPath, setCurrentPath] = useState("");
 
   useEffect(() => {
     if (!token) {
@@ -85,6 +87,9 @@ export const MainView = () => {
             setToken(null);
             localStorage.clear();
           }}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          currentPath={currentPath}
         />
       </Row>
 
@@ -167,17 +172,27 @@ export const MainView = () => {
                 ) : (
                   <>
                     <>
-                      {movies.map((movie) => (
-                        <Col className="mb-5" key={movie.ID} md={3}>
-                          <MovieCard
-                            movie={movie}
-                            username={user.Username}
-                            token={token}
-                            favorites={user.Favorites}
-                            updateFavorites={updateFavorites}
-                          />
-                        </Col>
-                      ))}
+                      {movies
+                        .filter(
+                          (movie) =>
+                            movie.Title.toLowerCase().includes(
+                              searchQuery.toLowerCase()
+                            ) ||
+                            movie.Genre.toLowerCase().includes(
+                              searchQuery.toLowerCase()
+                            )
+                        )
+                        .map((movie) => (
+                          <Col className="mb-5" key={movie.ID} md={3}>
+                            <MovieCard
+                              movie={movie}
+                              username={user.Username}
+                              token={token}
+                              favorites={user.Favorites}
+                              updateFavorites={updateFavorites}
+                            />
+                          </Col>
+                        ))}
                     </>
                     <div className="text-center mb-8">
                       <Button
@@ -214,6 +229,7 @@ export const MainView = () => {
                           token={token}
                           setUser={setUser}
                           setToken={setToken}
+                          setCurrentPath={setCurrentPath}
                         />
                       </Card.Body>
                     </Card>

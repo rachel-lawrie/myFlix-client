@@ -3,14 +3,20 @@
 // allow user to deregister
 // bring to mainview, but also possibly navigation view since the click to the page will be from there where the user logic would go
 
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { PopupForm } from "../popup-form/popup-form";
 import { PasswordResetForm } from "../passwordreset-form/passwordreset-form";
 import { Col } from "react-bootstrap";
 
-export const ProfileView = ({ user, token, setUser, setToken }) => {
+export const ProfileView = ({
+  user,
+  token,
+  setUser,
+  setToken,
+  setCurrentPath,
+}) => {
   const [showForm, setShowForm] = useState(false);
 
   const handleEditProfile = () => {
@@ -55,6 +61,13 @@ export const ProfileView = ({ user, token, setUser, setToken }) => {
         console.error("Error deregistering account:", error);
       });
   };
+
+  useEffect(() => {
+    setCurrentPath("/profile");
+    return () => {
+      setCurrentPath(null);
+    };
+  }, []);
 
   if (!user) {
     return <Navigate to="/login" />;
