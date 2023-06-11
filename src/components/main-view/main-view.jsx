@@ -202,27 +202,33 @@ export const MainView = () => {
             path="/profile"
             element={
               <>
-                <Card className="p-3">
-                  <Card.Body>
-                    <ProfileView
-                      users={users}
-                      user={user}
-                      token={token}
-                      setUser={setUser}
-                      setToken={setToken}
-                    />
-                  </Card.Body>
-                </Card>
-                <>
-                  <FavoritesView
-                    user={user}
-                    movies={movies}
-                    username={user.Username}
-                    token={token}
-                    favorites={user.Favorites}
-                    updateFavorites={updateFavorites}
-                  />
-                </>
+                {!user ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <>
+                    <Card className="p-3">
+                      <Card.Body>
+                        <ProfileView
+                          users={users}
+                          user={user}
+                          token={token}
+                          setUser={setUser}
+                          setToken={setToken}
+                        />
+                      </Card.Body>
+                    </Card>
+                    <>
+                      <FavoritesView
+                        user={user}
+                        movies={movies}
+                        username={user.Username}
+                        token={token}
+                        favorites={user.Favorites}
+                        updateFavorites={updateFavorites}
+                      />
+                    </>
+                  </>
+                )}
               </>
             }
           />
