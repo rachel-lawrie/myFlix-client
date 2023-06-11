@@ -79,7 +79,7 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-      <Row className="mt-5">
+      <Row className="navbar-custom">
         <NavigationBar
           user={user}
           onLoggedOut={() => {

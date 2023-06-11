@@ -41,3 +41,25 @@ $body-bg: rgb(41, 76, 116);
 .favorites-heading {
   color: white;
 }
+
+.form-control {
+  background-color: white;
+}
+
+input:focus {
+  background-color: white !important;
+}
+
+.navbar-custom {
+  width: 100%;
+  margin: 0;
+}
+
+.Container {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  padding: 10px;
+}

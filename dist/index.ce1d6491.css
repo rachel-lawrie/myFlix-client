@@ -20017,4 +20017,26 @@ textarea.form-control-lg {
   color: #fff;
 }
 
+.form-control {
+  background-color: #fff;
+}
+
+input:focus {
+  background-color: #fff !important;
+}
+
+.navbar-custom {
+  width: 100%;
+  margin: 0;
+}
+
+.Container {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  padding: 10px;
+}
+
 /*# sourceMappingURL=index.ce1d6491.css.map */
