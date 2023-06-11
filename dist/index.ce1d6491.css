@@ -8020,7 +8020,7 @@
   --bs-white-rgb: 255, 255, 255;
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
-  --bs-body-bg-rgb: 255, 255, 255;
+  --bs-body-bg-rgb: 41, 76, 116;
   --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(180deg, #ffffff26, #fff0);
@@ -8029,7 +8029,7 @@
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
   --bs-body-color: #212529;
-  --bs-body-bg: white;
+  --bs-body-bg: #294c74;
   --bs-border-width: 1px;
   --bs-border-style: solid;
   --bs-border-color: #dee2e6;
@@ -8544,7 +8544,7 @@ progress {
   border: 1px solid var(--bs-border-color);
   max-width: 100%;
   height: auto;
-  background-color: #fff;
+  background-color: #294c74;
   border-radius: .375rem;
   padding: .25rem;
 }
@@ -10090,7 +10090,7 @@ progress {
   width: 100%;
   color: #212529;
   appearance: none;
-  background-color: #fff;
+  background-color: #294c74;
   background-clip: padding-box;
   border: 1px solid #ced4da;
   border-radius: .375rem;
@@ -10118,7 +10118,7 @@ progress {
 
 .form-control:focus {
   color: #212529;
-  background-color: #fff;
+  background-color: #294c74;
   border-color: #94a6ba;
   outline: 0;
   box-shadow: 0 0 0 .25rem #294c7440;
@@ -10254,7 +10254,7 @@ textarea.form-control-lg {
   -moz-padding-start: calc(.75rem - 3px);
   color: #212529;
   appearance: none;
-  background-color: #fff;
+  background-color: #294c74;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
   background-position: right .75rem center;
   background-repeat: no-repeat;
@@ -10341,7 +10341,7 @@ textarea.form-control-lg {
   vertical-align: top;
   appearance: none;
   print-color-adjust: exact;
-  background-color: #fff;
+  background-color: #294c74;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -10465,11 +10465,11 @@ textarea.form-control-lg {
 }
 
 .form-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 .25rem #294c7440;
+  box-shadow: 0 0 0 1px #294c74, 0 0 0 .25rem #294c7440;
 }
 
 .form-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 .25rem #294c7440;
+  box-shadow: 0 0 0 1px #294c74, 0 0 0 .25rem #294c7440;
 }
 
 .form-range::-moz-focus-outer {
@@ -11781,8 +11781,8 @@ textarea.form-control-lg {
   --bs-nav-tabs-border-radius: .375rem;
   --bs-nav-tabs-link-hover-border-color: #e9ecef #e9ecef #dee2e6;
   --bs-nav-tabs-link-active-color: #495057;
-  --bs-nav-tabs-link-active-bg: white;
-  --bs-nav-tabs-link-active-border-color: #dee2e6 #dee2e6 white;
+  --bs-nav-tabs-link-active-bg: #294c74;
+  --bs-nav-tabs-link-active-border-color: #dee2e6 #dee2e6 #294c74;
   border-bottom: var(--bs-nav-tabs-border-width) solid var(--bs-nav-tabs-border-color);
 }
 
@@ -12534,7 +12534,7 @@ textarea.form-control-lg {
 
 .accordion {
   --bs-accordion-color: #212529;
-  --bs-accordion-bg: white;
+  --bs-accordion-bg: #294c74;
   --bs-accordion-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out, border-radius .15s ease;
   --bs-accordion-border-color: var(--bs-border-color);
   --bs-accordion-border-width: 1px;
@@ -20003,6 +20003,18 @@ textarea.form-control-lg {
 
 .favorite-star.favorite i {
   color: #294c74;
+}
+
+.search-bar {
+  background-color: #fff;
+}
+
+.card {
+  border: none;
+}
+
+.favorites-heading {
+  color: #fff;
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */

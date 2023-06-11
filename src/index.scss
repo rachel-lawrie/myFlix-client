@@ -7,7 +7,7 @@ $color: steelblue;
 }
 
 $primary: rgb(41, 76, 116);
-$body-bg: white;
+$body-bg: rgb(41, 76, 116);
 @import "~bootstrap/scss/bootstrap.scss";
 
 .favorite-star {
@@ -28,4 +28,16 @@ $body-bg: white;
 
 .favorite-star.favorite i {
   color: $primary;
+}
+
+.search-bar {
+  background-color: white;
+}
+
+.card {
+  border: none;
+}
+
+.favorites-heading {
+  color: white;
 }

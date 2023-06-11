@@ -47003,7 +47003,7 @@ const NavigationBar = ({ user , onLoggedOut , searchQuery , setSearchQuery , cur
                                         placeholder: "Search by title or genre",
                                         value: searchQuery,
                                         onChange: (e)=>setSearchQuery(e.target.value),
-                                        className: "form-control"
+                                        className: "form-control search-bar"
                                     }, void 0, false, {
                                         fileName: "src/components/navigation-bar/navigation-bar.jsx",
                                         lineNumber: 63,
@@ -47669,7 +47669,7 @@ const FavoritesView = ({ movies , user , username , token , updateFavorites  })=
         className: "justify-content-center mt-5",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-                className: "text-center mb-4",
+                className: "favorites-heading text-center mb-4",
                 children: "Favorites"
             }, void 0, false, {
                 fileName: "src/components/favorites-view/favorites-view.jsx",

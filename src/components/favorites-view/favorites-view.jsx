@@ -16,7 +16,7 @@ export const FavoritesView = ({
 
   return (
     <Row className="justify-content-center mt-5">
-      <h1 className="text-center mb-4">Favorites</h1>
+      <h1 className="favorites-heading text-center mb-4">Favorites</h1>
       {favoriteMovies.length === 0 ? (
         <p>No favorite movies selected.</p>
       ) : (

@@ -65,7 +65,7 @@ export const NavigationBar = ({
                   placeholder="Search by title or genre"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="form-control"
+                  className="form-control search-bar"
                 />
               </>
             )}
