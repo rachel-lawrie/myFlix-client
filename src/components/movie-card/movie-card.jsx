@@ -11,9 +11,6 @@ export const MovieCard = ({
   favorites,
   updateFavorites,
 }) => {
-  console.log(username);
-  console.log(token);
-  console.log(favorites);
   const isFavorite = favorites.includes(movie.ID);
 
   const handleFavoriteClick = () => {

@@ -38,7 +38,6 @@ export const ProfileView = ({
   };
 
   const handleDeRegister = () => {
-    console.log(token);
     fetch(`https://lawrie-myflix.herokuapp.com/users/${user.Username}`, {
       method: "DELETE",
       headers: {

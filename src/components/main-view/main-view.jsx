@@ -34,7 +34,6 @@ export const MainView = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Response:", data); // log the entire response object
         const moviesFromApi = data.map((movie) => {
           return {
             ID: movie._id,
@@ -45,9 +44,8 @@ export const MainView = () => {
             Image: movie.ImagePath,
           };
         });
-        console.log("Movies formatted:", moviesFromApi);
+
         setMovies(moviesFromApi);
-        console.log(movies);
       })
       .catch((error) => {
         console.error("Error fetching movies:", error);
@@ -58,7 +56,6 @@ export const MainView = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Response:", data); // log the entire response object
         const usersFromApi = data.map((user) => {
           return {
             ID: user._id,
@@ -68,9 +65,8 @@ export const MainView = () => {
             Favorites: user.Favorites,
           };
         });
-        console.log("Users formatted:", usersFromApi);
+
         setUsers(usersFromApi);
-        console.log(users);
       })
       .catch((error) => {
         console.error("Error fetching users:", error);
@@ -79,7 +75,7 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-      <Row className="navbar-custom">
+      <Row>
         <NavigationBar
           user={user}
           onLoggedOut={() => {
