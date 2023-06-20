@@ -1,14 +1,15 @@
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export const NavigationBar = ({
   user,
   onLoggedOut,
   searchQuery,
   setSearchQuery,
-  currentPath,
 }) => {
+  const location = useLocation();
+
   return (
     <Navbar bg="light" expand="lg" className="navbar-custom">
       <Navbar.Brand as={Link} to="/">
@@ -27,7 +28,7 @@ export const NavigationBar = ({
               </Nav.Link>
             </>
           )}
-          {user && currentPath === "/profile" && (
+          {user && location.pathname === "/profile" && (
             <>
               <Nav.Link as={Link} to="/">
                 Home
@@ -44,7 +45,7 @@ export const NavigationBar = ({
               </NavDropdown>
             </>
           )}
-          {user && currentPath !== "/profile" && (
+          {user && location.pathname !== "/profile" && (
             <>
               <Nav.Link as={Link} to="/">
                 Home

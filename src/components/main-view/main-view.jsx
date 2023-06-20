@@ -22,7 +22,6 @@ export const MainView = () => {
     setUser(updatedUser);
   };
   const [searchQuery, setSearchQuery] = useState("");
-  const [currentPath, setCurrentPath] = useState("");
 
   useEffect(() => {
     if (!token) {
@@ -85,7 +84,6 @@ export const MainView = () => {
           }}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
-          currentPath={currentPath}
         />
       </Row>
 
@@ -225,7 +223,6 @@ export const MainView = () => {
                           token={token}
                           setUser={setUser}
                           setToken={setToken}
-                          setCurrentPath={setCurrentPath}
                         />
                       </Card.Body>
                     </Card>

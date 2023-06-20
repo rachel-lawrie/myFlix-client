@@ -10,13 +10,7 @@ import { PopupForm } from "../popup-form/popup-form";
 import { PasswordResetForm } from "../passwordreset-form/passwordreset-form";
 import { Col } from "react-bootstrap";
 
-export const ProfileView = ({
-  user,
-  token,
-  setUser,
-  setToken,
-  setCurrentPath,
-}) => {
+export const ProfileView = ({ user, token, setUser, setToken }) => {
   const [showForm, setShowForm] = useState(false);
 
   const handleEditProfile = () => {
@@ -60,13 +54,6 @@ export const ProfileView = ({
         console.error("Error deregistering account:", error);
       });
   };
-
-  useEffect(() => {
-    setCurrentPath("/profile");
-    return () => {
-      setCurrentPath(null);
-    };
-  }, []);
 
   if (!user) {
     return <Navigate to="/login" />;
