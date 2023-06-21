@@ -22,6 +22,7 @@ export const MainView = () => {
     setUser(updatedUser);
   };
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentPath, setCurrentPath] = useState("");
 
   useEffect(() => {
     if (!token) {
@@ -74,17 +75,19 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-      <NavigationBar
-        user={user}
-        onLoggedOut={() => {
-          setUser(null);
-          setToken(null);
-          localStorage.clear();
-        }}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-      />
-
+      <Row>
+        <NavigationBar
+          user={user}
+          onLoggedOut={() => {
+            setUser(null);
+            setToken(null);
+            localStorage.clear();
+          }}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          currentPath={currentPath}
+        />
+      </Row>
       <Container>
         <Row className="justify-content-md-center align-items-center mt-5">
           <Routes>
@@ -222,6 +225,7 @@ export const MainView = () => {
                             token={token}
                             setUser={setUser}
                             setToken={setToken}
+                            setCurrentPath={setCurrentPath}
                           />
                         </Card.Body>
                       </Card>
