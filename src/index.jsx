@@ -3,9 +3,15 @@ import { MainView } from "./components/main-view/main-view";
 // Import statement to indicate bundle `./index.scss`
 import "./index.scss";
 import Container from "react-bootstrap/Container";
+import { store } from "./redux/store";
+import { Provider } from "react-redux";
 
 const MyFlixApplication = () => {
-  return <MainView />;
+  return (
+    <Provider store={store}>
+      <MainView />
+    </Provider>
+  );
 };
 
 // Finds the root of app

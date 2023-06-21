@@ -37,7 +37,7 @@ export const PopupForm = ({
     })
       .then((response) => response.json())
       .then((updatedUser) => {
-        // Call the callback function to update the profile in ProfileView
+        // callback function to update the profile in ProfileView
         handleUpdateProfile(updatedUser);
         alert("Information update successful");
         handleClose();
@@ -84,6 +84,7 @@ export const PopupForm = ({
               type="date"
               value={birthday}
               onChange={(e) => setBirthday(e.target.value)}
+              placeholder={user.Birthday}
             />
           </Form.Group>
           <Button variant="primary" type="submit">

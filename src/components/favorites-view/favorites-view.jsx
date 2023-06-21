@@ -1,13 +1,9 @@
 import { MovieCard } from "../movie-card/movie-card";
 import { Button, Col, Card, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
-export const FavoritesView = ({
-  movies,
-  user,
-  username,
-  token,
-  updateFavorites,
-}) => {
+export const FavoritesView = ({ user, username, token, updateFavorites }) => {
+  const movies = useSelector((state) => state.movies);
   // Filter movies based on IDs present in user.Favorites
   const favoriteMovies = movies.filter((movie) =>
     user.Favorites.includes(movie.ID)

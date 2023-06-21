@@ -9,13 +9,16 @@ import { FavoritesView } from "../favorites-view/favorites-view";
 import Container from "react-bootstrap/Container";
 import { Button, Col, Card, Row } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setMovies } from "../../redux/reducers/movies";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
+  const movies = useSelector((state) => state.movies);
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
-  const [movies, setMovies] = useState([]);
+
   const [users, setUsers] = useState([]);
   const updateFavorites = (newFavorites) => {
     const updatedUser = { ...user, Favorites: newFavorites };
@@ -23,6 +26,7 @@ export const MainView = () => {
   };
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPath, setCurrentPath] = useState("");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!token) {
@@ -45,7 +49,7 @@ export const MainView = () => {
           };
         });
 
-        setMovies(moviesFromApi);
+        dispatch(setMovies(moviesFromApi));
       })
       .catch((error) => {
         console.error("Error fetching movies:", error);
@@ -150,7 +154,7 @@ export const MainView = () => {
                     <Col>The list is empty!</Col>
                   ) : (
                     <Col md={8}>
-                      <MovieView movies={movies} />
+                      <MovieView />
                     </Col>
                   )}
                 </>
@@ -232,7 +236,6 @@ export const MainView = () => {
                       <>
                         <FavoritesView
                           user={user}
-                          movies={movies}
                           username={user.Username}
                           token={token}
                           favorites={user.Favorites}

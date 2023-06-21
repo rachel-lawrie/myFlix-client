@@ -2,8 +2,10 @@ import PropTypes from "prop-types";
 import { Button, Col, Row } from "react-bootstrap";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-export const MovieView = ({ movies }) => {
+export const MovieView = () => {
+  const movies = useSelector((state) => state.movies);
   const { movieId } = useParams();
 
   const movie = movies.find((m) => m.ID === movieId);
