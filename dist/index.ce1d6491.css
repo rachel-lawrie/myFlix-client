@@ -20039,4 +20039,14 @@ input:focus {
   padding: 10px;
 }
 
+.movie-view-text {
+  background-color: #fff;
+  border-radius: 5%;
+  padding: 10px;
+}
+
+.favorites-text {
+  color: #fff;
+}
+
 /*# sourceMappingURL=index.ce1d6491.css.map */

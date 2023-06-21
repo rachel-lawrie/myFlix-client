@@ -23,7 +23,7 @@ export const MovieView = ({ movies }) => {
           <img src={movie.Image} />
         </Col>
         <Col md={6} className="d-flex align-items-center">
-          <div>
+          <div className="movie-view-text">
             <p>
               <strong>Title: </strong>
               {movie.Title}

@@ -8,7 +8,6 @@ export const FavoritesView = ({
   token,
   updateFavorites,
 }) => {
-  console.log("User Favorites:", user.Favorites);
   // Filter movies based on IDs present in user.Favorites
   const favoriteMovies = movies.filter((movie) =>
     user.Favorites.includes(movie.ID)
@@ -18,7 +17,7 @@ export const FavoritesView = ({
     <Row className="justify-content-center mt-5">
       <h1 className="favorites-heading text-center mb-4">Favorites</h1>
       {favoriteMovies.length === 0 ? (
-        <p>No favorite movies selected.</p>
+        <span className="favorites-text">No favorite movies selected.</span>
       ) : (
         favoriteMovies.map((movie) => (
           <Col className="mb-5" key={movie.ID} md={3}>

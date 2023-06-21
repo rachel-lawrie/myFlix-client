@@ -74,175 +74,175 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-      <Row>
-        <NavigationBar
-          user={user}
-          onLoggedOut={() => {
-            setUser(null);
-            setToken(null);
-            localStorage.clear();
-          }}
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
-      </Row>
+      <NavigationBar
+        user={user}
+        onLoggedOut={() => {
+          setUser(null);
+          setToken(null);
+          localStorage.clear();
+        }}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
 
-      <Row className="justify-content-md-center align-items-center mt-5">
-        <Routes>
-          <Route
-            path="/signup"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={5}>
-                    <Card className="p-3">
-                      <Card.Body>
-                        <Card.Title className="mb-5 text-center">
-                          Sign Up
-                        </Card.Title>
-                        <SignupView />
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                )}
-              </>
-            }
-          />
+      <Container>
+        <Row className="justify-content-md-center align-items-center mt-5">
+          <Routes>
+            <Route
+              path="/signup"
+              element={
+                <>
+                  {user ? (
+                    <Navigate to="/" />
+                  ) : (
+                    <Col md={5}>
+                      <Card className="p-3">
+                        <Card.Body>
+                          <Card.Title className="mb-5 text-center">
+                            Sign Up
+                          </Card.Title>
+                          <SignupView />
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  )}
+                </>
+              }
+            />
 
-          <Route
-            path="/login"
-            element={
-              <>
-                {user ? (
-                  <Navigate to="/" />
-                ) : (
-                  <Col md={5}>
-                    <Card className="me-4 p-3">
-                      <Card.Body>
-                        <Card.Title className="mb-5 text-center">
-                          Login
-                        </Card.Title>
-                        <LoginView
-                          onLoggedIn={(user, token) => {
-                            setUser(user);
-                            setToken(token);
+            <Route
+              path="/login"
+              element={
+                <>
+                  {user ? (
+                    <Navigate to="/" />
+                  ) : (
+                    <Col md={5}>
+                      <Card className="me-4 p-3">
+                        <Card.Body>
+                          <Card.Title className="mb-5 text-center">
+                            Login
+                          </Card.Title>
+                          <LoginView
+                            onLoggedIn={(user, token) => {
+                              setUser(user);
+                              setToken(token);
+                            }}
+                          />
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  )}
+                </>
+              }
+            />
+
+            <Route
+              path="/movies/:movieId"
+              element={
+                <>
+                  {!user ? (
+                    <Navigate to="/login" replace />
+                  ) : movies.length === 0 ? (
+                    <Col>The list is empty!</Col>
+                  ) : (
+                    <Col md={8}>
+                      <MovieView movies={movies} />
+                    </Col>
+                  )}
+                </>
+              }
+            />
+
+            <Route
+              path="/"
+              element={
+                <>
+                  {!user ? (
+                    <Navigate to="/login" replace />
+                  ) : movies.length === 0 ? (
+                    <Col>The list is empty!</Col>
+                  ) : (
+                    <>
+                      <>
+                        {movies
+                          .filter(
+                            (movie) =>
+                              movie.Title.toLowerCase().includes(
+                                searchQuery.toLowerCase()
+                              ) ||
+                              movie.Genre.toLowerCase().includes(
+                                searchQuery.toLowerCase()
+                              )
+                          )
+                          .map((movie) => (
+                            <Col className="mb-5" key={movie.ID} md={3}>
+                              <MovieCard
+                                movie={movie}
+                                username={user.Username}
+                                token={token}
+                                favorites={user.Favorites}
+                                updateFavorites={updateFavorites}
+                              />
+                            </Col>
+                          ))}
+                      </>
+                      <div className="text-center mb-8">
+                        <Button
+                          className="mb-5"
+                          style={{ padding: "5px 10px" }}
+                          variant="primary"
+                          onClick={() => {
+                            setUser(null);
+                            setToken(null);
+                            localStorage.clear();
                           }}
-                        />
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                )}
-              </>
-            }
-          />
-
-          <Route
-            path="/movies/:movieId"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
-                ) : (
-                  <Col md={8}>
-                    <MovieView movies={movies} />
-                  </Col>
-                )}
-              </>
-            }
-          />
-
-          <Route
-            path="/"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
-                ) : (
-                  <>
-                    <>
-                      {movies
-                        .filter(
-                          (movie) =>
-                            movie.Title.toLowerCase().includes(
-                              searchQuery.toLowerCase()
-                            ) ||
-                            movie.Genre.toLowerCase().includes(
-                              searchQuery.toLowerCase()
-                            )
-                        )
-                        .map((movie) => (
-                          <Col className="mb-5" key={movie.ID} md={3}>
-                            <MovieCard
-                              movie={movie}
-                              username={user.Username}
-                              token={token}
-                              favorites={user.Favorites}
-                              updateFavorites={updateFavorites}
-                            />
-                          </Col>
-                        ))}
+                        >
+                          Logout
+                        </Button>
+                      </div>
                     </>
-                    <div className="text-center mb-8">
-                      <Button
-                        className="mb-5"
-                        style={{ padding: "5px 10px" }}
-                        variant="primary"
-                        onClick={() => {
-                          setUser(null);
-                          setToken(null);
-                          localStorage.clear();
-                        }}
-                      >
-                        Logout
-                      </Button>
-                    </div>
-                  </>
-                )}
-              </>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <>
-                {!user ? (
-                  <Navigate to="/login" replace />
-                ) : (
-                  <>
-                    <Card className="p-3">
-                      <Card.Body>
-                        <ProfileView
-                          users={users}
+                  )}
+                </>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <>
+                  {!user ? (
+                    <Navigate to="/login" replace />
+                  ) : (
+                    <>
+                      <Card className="p-3">
+                        <Card.Body>
+                          <ProfileView
+                            users={users}
+                            user={user}
+                            token={token}
+                            setUser={setUser}
+                            setToken={setToken}
+                          />
+                        </Card.Body>
+                      </Card>
+                      <>
+                        <FavoritesView
                           user={user}
+                          movies={movies}
+                          username={user.Username}
                           token={token}
-                          setUser={setUser}
-                          setToken={setToken}
+                          favorites={user.Favorites}
+                          updateFavorites={updateFavorites}
                         />
-                      </Card.Body>
-                    </Card>
-                    <>
-                      <FavoritesView
-                        user={user}
-                        movies={movies}
-                        username={user.Username}
-                        token={token}
-                        favorites={user.Favorites}
-                        updateFavorites={updateFavorites}
-                      />
+                      </>
                     </>
-                  </>
-                )}
-              </>
-            }
-          />
-        </Routes>
-      </Row>
+                  )}
+                </>
+              }
+            />
+          </Routes>
+        </Row>
+      </Container>
     </BrowserRouter>
   );
 };

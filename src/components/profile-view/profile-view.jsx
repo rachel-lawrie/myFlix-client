@@ -12,6 +12,7 @@ import { Col } from "react-bootstrap";
 
 export const ProfileView = ({ user, token, setUser, setToken }) => {
   const [showForm, setShowForm] = useState(false);
+  const [showFormtwo, setShowFormtwo] = useState(false);
 
   const handleEditProfile = () => {
     setShowForm(true);
@@ -20,8 +21,6 @@ export const ProfileView = ({ user, token, setUser, setToken }) => {
   const handleCloseForm = () => {
     setShowForm(false);
   };
-
-  const [showFormtwo, setShowFormtwo] = useState(false);
 
   const handleUpdatePassword = () => {
     setShowFormtwo(true);
@@ -53,6 +52,11 @@ export const ProfileView = ({ user, token, setUser, setToken }) => {
       .catch((error) => {
         console.error("Error deregistering account:", error);
       });
+  };
+
+  const handleUpdateProfile = (updatedUser) => {
+    // Update the user state with the updated data
+    setUser(updatedUser);
   };
 
   if (!user) {
@@ -92,6 +96,7 @@ export const ProfileView = ({ user, token, setUser, setToken }) => {
             token={token}
             show={showForm}
             handleClose={handleCloseForm}
+            handleUpdateProfile={handleUpdateProfile}
           />
           <PasswordResetForm
             username={user.Username}

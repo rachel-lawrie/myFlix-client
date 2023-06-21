@@ -2,7 +2,14 @@ import { React, useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useParams } from "react-router";
 
-export const PopupForm = ({ user, token, show, handleClose }) => {
+export const PopupForm = ({
+  user,
+  token,
+  show,
+  handleClose,
+  handleUpdateProfile,
+}) => {
+  const originalUsername = user.Username;
   const [username, setUsername] = useState(user.Username);
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
@@ -18,21 +25,27 @@ export const PopupForm = ({ user, token, show, handleClose }) => {
       Birthday: formattedBirthday,
     };
 
-    fetch(`https://lawrie-myflix.herokuapp.com/users/${username}`, {
+    console.log("Data:", data);
+
+    fetch(`https://lawrie-myflix.herokuapp.com/users/${originalUsername}`, {
       method: "PUT",
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-    }).then((response) => {
-      if (response.ok) {
+    })
+      .then((response) => response.json())
+      .then((updatedUser) => {
+        // Call the callback function to update the profile in ProfileView
+        handleUpdateProfile(updatedUser);
         alert("Information update successful");
-        window.location.reload();
-      } else {
+        handleClose();
+      })
+      .catch((error) => {
         alert("Information update failed");
-      }
-    });
+        console.error("Error updating profile:", error);
+      });
   };
 
   return (
@@ -69,7 +82,7 @@ export const PopupForm = ({ user, token, show, handleClose }) => {
             <Form.Label>Birthday:</Form.Label>
             <Form.Control
               type="date"
-              value={new Date(user.Birthday).toISOString().slice(0, 10)}
+              value={birthday}
               onChange={(e) => setBirthday(e.target.value)}
             />
           </Form.Group>
