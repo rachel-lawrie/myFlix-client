@@ -18,8 +18,6 @@ export const SignupView = () => {
       Birthday: birthday,
     };
 
-    console.log("Data being posted:", data); // Log the data object
-
     fetch("https://lawrie-myflix.herokuapp.com/users", {
       method: "POST",
       body: JSON.stringify(data),

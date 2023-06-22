@@ -29,7 +29,6 @@ export const MovieCard = ({
       )
         .then((response) => response.json())
         .then((updatedUser) => {
-          console.log(updatedUser);
           updateFavorites(updatedUser.Favorites);
         })
         .catch((error) => {

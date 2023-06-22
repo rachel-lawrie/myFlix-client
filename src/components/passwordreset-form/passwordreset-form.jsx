@@ -31,8 +31,6 @@ export const PasswordResetForm = ({
       Password: password,
     };
 
-    console.log("password", data);
-
     fetch(`https://lawrie-myflix.herokuapp.com/users/${username}`, {
       method: "PUT",
       body: JSON.stringify(data),
