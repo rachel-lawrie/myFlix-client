@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../../redux/reducers/user";
 
 export const MovieCard = ({
   movie,
@@ -27,6 +29,7 @@ export const MovieCard = ({
       )
         .then((response) => response.json())
         .then((updatedUser) => {
+          console.log(updatedUser);
           updateFavorites(updatedUser.Favorites);
         })
         .catch((error) => {

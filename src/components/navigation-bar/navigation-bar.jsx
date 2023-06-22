@@ -1,13 +1,12 @@
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../../redux/reducers/user";
 
-export const NavigationBar = ({
-  user,
-  onLoggedOut,
-  searchQuery,
-  setSearchQuery,
-}) => {
+export const NavigationBar = ({ onLoggedOut, searchQuery, setSearchQuery }) => {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const location = useLocation();
 
   return (

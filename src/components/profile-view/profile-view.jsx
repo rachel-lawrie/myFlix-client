@@ -1,18 +1,17 @@
-// filter /users for user's information
-// access APIs through buttons
-// allow user to deregister
-// bring to mainview, but also possibly navigation view since the click to the page will be from there where the user logic would go
-
 import { React, useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import { PopupForm } from "../popup-form/popup-form";
 import { PasswordResetForm } from "../passwordreset-form/passwordreset-form";
 import { Col } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../../redux/reducers/user";
 
-export const ProfileView = ({ user, token, setUser, setToken }) => {
+export const ProfileView = ({ token, setToken }) => {
   const [showForm, setShowForm] = useState(false);
   const [showFormtwo, setShowFormtwo] = useState(false);
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   const handleEditProfile = () => {
     setShowForm(true);
@@ -56,7 +55,7 @@ export const ProfileView = ({ user, token, setUser, setToken }) => {
 
   const handleUpdateProfile = (updatedUser) => {
     // Update the user state with the updated data
-    setUser(updatedUser);
+    dispatch(setUser(updatedUser));
   };
 
   if (!user) {

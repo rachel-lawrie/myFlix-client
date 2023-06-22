@@ -11,18 +11,19 @@ import { Button, Col, Card, Row } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setMovies } from "../../redux/reducers/movies";
+import { setUser } from "../../redux/reducers/user";
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const storedToken = localStorage.getItem("token");
   const movies = useSelector((state) => state.movies);
-  const [user, setUser] = useState(storedUser ? storedUser : null);
+  const user = useSelector((state) => state.user);
   const [token, setToken] = useState(storedToken ? storedToken : null);
 
   const [users, setUsers] = useState([]);
   const updateFavorites = (newFavorites) => {
     const updatedUser = { ...user, Favorites: newFavorites };
-    setUser(updatedUser);
+    dispatch(setUser(updatedUser)); // I think this is causing the favorites bug
   };
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPath, setCurrentPath] = useState("");
@@ -81,15 +82,13 @@ export const MainView = () => {
     <BrowserRouter>
       <Row>
         <NavigationBar
-          user={user}
           onLoggedOut={() => {
-            setUser(null);
             setToken(null);
             localStorage.clear();
+            dispatch(setUser(null));
           }}
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
-          currentPath={currentPath}
         />
       </Row>
       <Container>
@@ -132,7 +131,7 @@ export const MainView = () => {
                           </Card.Title>
                           <LoginView
                             onLoggedIn={(user, token) => {
-                              setUser(user);
+                              dispatch(setUser(user));
                               setToken(token);
                             }}
                           />

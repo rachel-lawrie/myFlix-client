@@ -1,14 +1,16 @@
 import { React, useState, useEffect } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import { useParams } from "react-router";
+import { useSelector } from "react-redux";
+import { setUser } from "../../redux/reducers/user";
 
 export const PopupForm = ({
-  user,
   token,
   show,
   handleClose,
   handleUpdateProfile,
 }) => {
+  const user = useSelector((state) => state.user);
   const originalUsername = user.Username;
   const [username, setUsername] = useState(user.Username);
   const [email, setEmail] = useState(user.Email);

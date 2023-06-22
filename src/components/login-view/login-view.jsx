@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser } from "../../redux/reducers/user";
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
