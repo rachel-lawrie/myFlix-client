@@ -30,7 +30,7 @@ export const PopupForm = ({
     console.log("Data:", data);
 
     fetch(
-      `https://lawrie-myflix-ed60b02355b8.herokuapp.com/users/${originalUsername}`,
+      `https://rl-myflix-422ec97b1c46.herokuapp.com/users/${originalUsername}`,
       {
         method: "PUT",
         body: JSON.stringify(data),

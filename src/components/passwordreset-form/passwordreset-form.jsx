@@ -31,17 +31,14 @@ export const PasswordResetForm = ({
       Password: password,
     };
 
-    fetch(
-      `https://lawrie-myflix-ed60b02355b8.herokuapp.com/users/${username}`,
-      {
-        method: "PUT",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    ).then((response) => {
+    fetch(`https://rl-myflix-422ec97b1c46.herokuapp.com/users/${username}`, {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((response) => {
       if (response.ok) {
         alert("Password update successful");
         window.location.reload();

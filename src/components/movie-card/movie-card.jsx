@@ -19,7 +19,7 @@ export const MovieCard = ({
     if (isFavorite) {
       // Remove movie from favorites
       fetch(
-        `https://lawrie-myflix-ed60b02355b8.herokuapp.com/users/${username}/movies/${movie.ID}`,
+        `https://rl-myflix-422ec97b1c46.herokuapp.com/users/${username}/movies/${movie.ID}`,
         {
           method: "DELETE",
           headers: {
@@ -37,7 +37,7 @@ export const MovieCard = ({
     } else {
       // Add movie to favorites
       fetch(
-        `https://lawrie-myflix-ed60b02355b8.herokuapp.com/users/${username}/movies/${movie.ID}`,
+        `https://rl-myflix-422ec97b1c46.herokuapp.com/users/${username}/movies/${movie.ID}`,
         {
           method: "POST",
           headers: {
