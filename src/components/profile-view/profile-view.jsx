@@ -30,13 +30,16 @@ export const ProfileView = ({ token, setToken }) => {
   };
 
   const handleDeRegister = () => {
-    fetch(`https://lawrie-myflix.herokuapp.com/users/${user.Username}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    fetch(
+      `https://lawrie-myflix-ed60b02355b8.herokuapp.com/users/${user.Username}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((response) => {
         if (response.ok) {
           setUser(null);

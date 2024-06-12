@@ -29,14 +29,17 @@ export const PopupForm = ({
 
     console.log("Data:", data);
 
-    fetch(`https://lawrie-myflix.herokuapp.com/users/${originalUsername}`, {
-      method: "PUT",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    fetch(
+      `https://lawrie-myflix-ed60b02355b8.herokuapp.com/users/${originalUsername}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((response) => response.json())
       .then((updatedUser) => {
         // callback function to update the profile in ProfileView

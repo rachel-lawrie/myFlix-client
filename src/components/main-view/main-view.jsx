@@ -34,7 +34,7 @@ export const MainView = () => {
       return;
     }
 
-    fetch("https://lawrie-myflix.herokuapp.com/movies", {
+    fetch("https://lawrie-myflix-ed60b02355b8.herokuapp.com/movies", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
@@ -56,7 +56,7 @@ export const MainView = () => {
         console.error("Error fetching movies:", error);
       });
 
-    fetch("https://lawrie-myflix.herokuapp.com/users", {
+    fetch("https://lawrie-myflix-ed60b02355b8.herokuapp.com/users", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => response.json())
